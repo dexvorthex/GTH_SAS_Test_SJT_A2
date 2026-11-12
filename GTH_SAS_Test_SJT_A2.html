@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTH SAS - Test SJT de Selección y Ajuste de Cargo (Nivel A2)</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .fade-in { animation: fadeIn 0.3s ease-in-out; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
+
+  <!-- TOP HEADER WITH GTH SAS IDENTITY -->
+  <header class="bg-emerald-900 text-white shadow-md sticky top-0 z-50 border-b-2 border-emerald-500">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center font-black text-white shadow text-lg tracking-wider">
+          GTH
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-bold text-base sm:text-lg leading-tight">GTH SAS &bull; Situational Judgment Test (SJT)</h1>
+            <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-700 text-emerald-100 px-2 py-0.5 rounded">Level A2 / Nivel A2</span>
+          </div>
+          <p class="text-xs text-emerald-200">Human Resources &bull; Role Assessment &amp; <em>Do / Does</em> Questions <span class="opacity-80">/ Gestión de Talento Humano</span></p>
+        </div>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 text-xs sm:text-sm">
+        <select id="voice-select" class="bg-emerald-950 border border-emerald-700 text-emerald-100 text-xs rounded-md px-2 py-1.5 max-w-[140px] truncate" title="Select English Voice">
+          <option value="">✨ Auto Natural Voice</option>
+        </select>
+        <button id="btn-speed-toggle" class="px-2.5 py-1.5 rounded-md font-semibold bg-emerald-800 text-emerald-100 hover:bg-emerald-700 border border-emerald-700 text-xs transition" title="Toggle Audio Speed">
+          ⚡ <span id="speed-label">1.0x</span>
+        </button>
+        <button id="nav-test-btn" class="px-3 py-1.5 rounded-md font-medium bg-emerald-600 text-white shadow transition hover:bg-emerald-500">
+          Start Test
+        </button>
+        <button id="nav-roles-btn" class="px-3 py-1.5 rounded-md font-medium bg-emerald-800 text-emerald-100 hover:bg-emerald-700 transition">
+          GTH SAS Roles (6)
+        </button>
+        <button id="nav-guide-btn" class="px-3 py-1.5 rounded-md font-medium bg-emerald-800 text-emerald-100 hover:bg-emerald-700 transition">
+          A2 Grammar Guide
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-5xl w-full mx-auto p-4 sm:p-6 lg:p-8">
+
+    <!-- VIEW 1: TEST INTERFACE -->
+    <div id="view-test" class="space-y-6">
+
+      <!-- INTRO CARD -->
+      <div id="setup-card" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <div class="max-w-3xl">
+          <div class="flex items-center space-x-2 mb-3">
+            <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-md uppercase tracking-wider">
+              GTH SAS &bull; Human Resources / Gestión de Talento Humano
+            </span>
+            <span class="px-2.5 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-md uppercase tracking-wider">
+              27 Trainees / 27 Aprendices
+            </span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight mb-1">
+            Workplace Situational Judgment Test (SJT) &amp; Do / Does
+          </h2>
+          <p class="text-sm sm:text-base font-semibold text-emerald-700 mb-3">
+            Test de Situaciones Laborales y Preguntas con Do y Does
+          </p>
+
+          <p class="text-slate-700 text-sm sm:text-base leading-relaxed mb-2">
+            Hello, trainee! This virtual test evaluates your decisions in everyday <strong>Human Resources situations at GTH SAS</strong>. You will practice basic A2 English questions using <strong class="text-emerald-700 bg-emerald-50 px-1 rounded">DO</strong> (<em>I, you, we, they</em>) and <strong class="text-blue-700 bg-blue-50 px-1 rounded">DOES</strong> (<em>he, she, it</em>).
+          </p>
+          <p class="text-slate-500 italic text-xs sm:text-sm leading-relaxed mb-4">
+            ¡Hola, aprendiz! Este test virtual evalúa tus decisiones en situaciones cotidianas de Gestión de Talento Humano en GTH SAS, practicando preguntas en inglés A2 con DO y DOES.
+          </p>
+
+          <div class="p-3.5 bg-blue-50 border border-blue-200 rounded-lg text-xs sm:text-sm text-blue-900 mb-3 flex items-start space-x-2">
+            <span class="text-base">&#128266;</span>
+            <p>
+              <strong>Audio &amp; Voices / Audio y Voces:</strong> You can listen to every situation and option with <strong>&#128266; Listen</strong> and choose a natural voice (&#10024;) in the top bar. <span class="text-blue-700 italic">/ Puedes escuchar la pronunciación de cada frase y escoger tu voz en la barra superior.</span>
+            </p>
+          </div>
+
+          <div class="p-3.5 bg-amber-50 border border-amber-200 rounded-lg text-xs sm:text-sm text-amber-900 mb-6 flex items-start space-x-2">
+            <span class="text-base">&#128161;</span>
+            <p>
+              <strong>Vocabulary Help Included / Ayuda de vocabulario incluida:</strong> Questions use key HR terms (<em>payroll = nómina</em>, <em>active breaks = pausas activas</em>, <em>induction = inducción</em>, <em>safety = seguridad</em>). At the end, you will see your <strong>overall score</strong> and best-fit GTH SAS role. <span class="block text-amber-800 italic mt-1">Las preguntas usan palabras clave de tu formación y al final verás tu puntaje general y el cargo que mejor se ajusta a tu perfil.</span>
+            </p>
+          </div>
+
+          <!-- MODE SELECTION -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+            <div id="mode-card-multi" class="p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer transition hover:shadow-sm">
+              <div class="flex items-center space-x-2 mb-1">
+                <input type="radio" id="mode-multi" name="test-mode" value="multi" checked class="text-emerald-600 focus:ring-emerald-500">
+                <label for="mode-multi" class="font-bold text-slate-900 text-sm cursor-pointer">Mode 1: Discover Your Ideal HR Role / Descubre tu Cargo Ideal</label>
+              </div>
+              <p class="text-xs text-slate-600 ml-6">
+                Answer 12 situational questions to calculate your match percentage across <strong>all 6 HR roles</strong>.
+                <span class="block text-slate-500 italic mt-1">Responde 12 preguntas situacionales para calcular tu afinidad con los 6 roles de talento humano.</span>
+              </p>
+            </div>
+
+            <div id="mode-card-targeted" class="p-4 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition hover:shadow-sm">
+              <div class="flex items-center space-x-2 mb-1">
+                <input type="radio" id="mode-targeted" name="test-mode" value="targeted" class="text-emerald-600 focus:ring-emerald-500">
+                <label for="mode-targeted" class="font-bold text-slate-900 text-sm cursor-pointer">Mode 2: Role Qualification Test / Prueba para un Cargo</label>
+              </div>
+              <p class="text-xs text-slate-600 ml-6">
+                Choose your target role (e.g., <em>Payroll</em> or <em>Recruitment</em>) and check if you reach the <strong>Qualified (&ge; 80%)</strong> threshold.
+                <span class="block text-slate-500 italic mt-1">Elige el cargo al que aspiras y verifica si alcanzas el puntaje para ser Apto (&ge; 80%).</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- TARGET ROLE SELECTOR (FOR TARGETED MODE) -->
+          <div id="target-role-container" class="hidden mb-6 p-4 bg-slate-50 border border-slate-200 rounded-lg">
+            <label for="target-role-select" class="block text-xs font-bold uppercase text-slate-700 tracking-wider mb-2">
+              Selecciona el cargo de GTH SAS que deseas evaluar:
+            </label>
+            <select id="target-role-select" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 font-medium text-slate-800">
+              <option value="rec">1. Auxiliar de Reclutamiento y Selección</option>
+              <option value="nom">2. Asistente / Auxiliar de Nómina</option>
+              <option value="sst">3. Auxiliar / Asistente de SST (Seguridad y Salud en el Trabajo)</option>
+              <option value="cap">4. Auxiliar de Capacitación y Evaluación de Desempeño</option>
+              <option value="bie">5. Auxiliar de Bienestar Laboral</option>
+              <option value="doc">6. Asistente / Auxiliar de Gestión Documental y Archivo</option>
+            </select>
+          </div>
+
+          <!-- CANDIDATE INFO FORM -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-200">
+            <div>
+              <label for="candidate-name" class="block text-xs font-semibold uppercase text-slate-600 mb-1">Trainee Full Name / Nombre Completo:</label>
+              <input type="text" id="candidate-name" placeholder="Ej: Laura Vanessa Gutiérrez" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+            <div>
+              <label for="candidate-id" class="block text-xs font-semibold uppercase text-slate-600 mb-1">SENA Group &amp; ID / Ficha SENA y Cédula:</label>
+              <input type="text" id="candidate-id" placeholder="Ej: 2715420 / 1088252436" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-end">
+            <button id="start-test-btn" class="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 text-white font-semibold rounded-lg shadow hover:bg-emerald-700 transition flex items-center justify-center space-x-2">
+              <span>Start Assessment</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- WHAT IS AN SJT? (BILINGUAL SECTION) -->
+      <div id="sjt-explainer-card" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-4">
+        <div class="flex items-center space-x-2.5">
+          <span class="px-2.5 py-1 bg-blue-100 text-blue-800 text-xs font-bold rounded-md uppercase tracking-wider">Info &bull; Context</span>
+          <h3 class="text-lg sm:text-xl font-extrabold text-slate-900">
+            What is a Situational Judgment Test (SJT)? <span class="text-emerald-700 font-semibold block sm:inline text-sm sm:text-base">/ ¿Qué es una prueba SJT?</span>
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm leading-relaxed">
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 space-y-2.5">
+            <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-blue-700 bg-blue-100 px-2 py-0.5 rounded">English</span>
+            <p class="text-slate-700">
+              A <strong>Situational Judgment Test (SJT)</strong> is an assessment method used by multinational corporations, consulting firms, and modern technology companies (such as Google, Amazon, Deloitte, and Procter &amp; Gamble) to evaluate candidates during early screening rounds.
+            </p>
+            <p class="text-slate-700">
+              Unlike traditional resume reviews, an SJT presents realistic workplace challenges and asks: <em>"What do you do next?"</em> or <em>"How does a team leader resolve this dispute?"</em> Candidates are evaluated not on memory, but on critical thinking, ethical standards, communication style, and role suitability.
+            </p>
+          </div>
+
+          <div class="bg-emerald-50/50 border border-emerald-200 rounded-lg p-4 space-y-2.5">
+            <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">Español</span>
+            <p class="text-slate-700">
+              Un <strong>Test de Juicio Situacional (SJT)</strong> es un método de evaluación usado por corporaciones multinacionales, firmas consultoras y empresas tecnológicas modernas (como Google, Amazon, Deloitte y Procter &amp; Gamble) para evaluar candidatos en las primeras rondas de selección.
+            </p>
+            <p class="text-slate-700">
+              A diferencia de una revisión tradicional de hoja de vida, un SJT plantea retos laborales reales y pregunta: <em>"¿Qué haces después?"</em> o <em>"¿Cómo resuelve un líder este conflicto?"</em>. No se evalúa memoria, sino pensamiento crítico, estándares éticos, estilo de comunicación y afinidad con el cargo.
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-slate-900 text-slate-100 rounded-xl p-5 space-y-3">
+          <h4 class="font-bold text-sm sm:text-base text-emerald-400">
+            Why Practice SJTs in English Class? <span class="text-slate-300 font-normal text-xs sm:text-sm">/ ¿Por qué practicar SJTs en clase de inglés?</span>
+          </h4>
+          <ul class="space-y-2 text-xs sm:text-sm">
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400 font-bold mt-0.5">&#10003;</span>
+              <div>
+                <strong class="text-white">Grammar in Real Context:</strong> Students practice questions with <em>Do</em> and <em>Does</em> in authentic professional situations rather than dry grammar exercises.
+                <span class="block text-slate-400 italic text-xs mt-0.5">Gramática en contexto real: Practicas preguntas con Do y Does en situaciones laborales auténticas, no en ejercicios aislados.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400 font-bold mt-0.5">&#10003;</span>
+              <div>
+                <strong class="text-white">Workplace Fluency:</strong> Students acquire high-frequency business idioms, operational terminology, and polite communication formulas.
+                <span class="block text-slate-400 italic text-xs mt-0.5">Fluidez laboral: Adquieres expresiones frecuentes de oficina, terminología operativa y fórmulas de comunicación cortés.</span>
+              </div>
+            </li>
+            <li class="flex items-start space-x-2">
+              <span class="text-emerald-400 font-bold mt-0.5">&#10003;</span>
+              <div>
+                <strong class="text-white">Career Readiness:</strong> Prepares bilingual professionals for real international recruitment processes.
+                <span class="block text-slate-400 italic text-xs mt-0.5">Preparación profesional: Te prepara como profesional bilingüe para procesos reales de selección internacional.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ACTIVE TEST RUNNER -->
+      <div id="test-runner" class="hidden space-y-6">
+
+        <!-- PROGRESS BAR -->
+        <div class="bg-white rounded-xl p-4 shadow-sm border border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="w-full sm:w-2/3">
+            <div class="flex justify-between text-xs font-semibold text-slate-600 mb-1">
+              <span id="progress-text">Question 1 of 12</span>
+              <span id="progress-percent">8% Completed</span>
+            </div>
+            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden">
+              <div id="progress-bar-fill" class="h-full bg-emerald-600 transition-all duration-300 rounded-full" style="width: 8%;"></div>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3 text-xs text-slate-500">
+            <span class="inline-flex items-center px-2 py-1 rounded bg-emerald-50 text-emerald-800 font-medium">
+              Mode: <span id="active-mode-label" class="ml-1 text-emerald-700 font-bold">Descubrimiento</span>
+            </span>
+            <span id="active-target-badge" class="hidden inline-flex items-center px-2 py-1 rounded bg-blue-50 text-blue-800 font-medium">
+              Target: <span id="active-target-name" class="ml-1 font-bold">Nómina</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- QUESTION CARD -->
+        <div id="question-card" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 fade-in">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span id="q-category-tag" class="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-emerald-100 text-emerald-800">
+              Grammar &bull; Do vs. Does
+            </span>
+            <span id="q-role-tag" class="text-xs font-medium text-slate-500">
+              Área: Gestión de Talento Humano
+            </span>
+          </div>
+
+          <h3 id="q-title" class="text-lg sm:text-xl font-bold text-slate-900 mb-2">
+            Situación Laboral en GTH SAS
+          </h3>
+          
+          <div class="bg-slate-50 border border-slate-200 rounded-lg p-3.5 mb-4 text-xs sm:text-sm text-slate-700 leading-relaxed relative">
+            <button id="btn-speak-scenario" type="button" class="float-right ml-3 mb-1 px-2.5 py-1 rounded-md bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-xs font-bold transition flex items-center space-x-1" title="Listen to scenario in English">
+              <span>&#128266;</span>
+              <span>Listen</span>
+            </button>
+            <p id="q-scenario" class="font-medium text-slate-900 mb-1"></p>
+            <p id="q-scenario-es" class="text-slate-500 italic text-xs"></p>
+          </div>
+
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-600 mb-2">
+            Elige la respuesta que mejor describe tu decisión en inglés:
+          </p>
+
+          <div class="space-y-3" id="options-container">
+            <!-- Dynamic Options Injected via JS -->
+          </div>
+
+          <!-- QUESTION NAV BUTTONS -->
+          <div class="mt-8 pt-4 border-t border-slate-200 flex items-center justify-between">
+            <button id="prev-btn" class="px-4 py-2 border border-slate-300 rounded-lg text-sm font-medium text-slate-700 hover:bg-slate-50 transition disabled:opacity-40 disabled:cursor-not-allowed">
+              &larr; Previous
+            </button>
+            <div class="flex items-center space-x-3">
+              <span id="validation-hint" class="text-xs text-rose-500 font-medium hidden">Please select an option to continue / Selecciona una opción</span>
+              <button id="next-btn" class="px-6 py-2 bg-emerald-600 text-white rounded-lg text-sm font-semibold hover:bg-emerald-700 shadow-sm transition">
+                Next Question &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS DASHBOARD -->
+      <div id="results-dashboard" class="hidden space-y-6 fade-in">
+        <!-- SCORE OVERVIEW BANNER -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8">
+          <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-6 border-b border-slate-200">
+            <div>
+              <span class="inline-block px-3 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded-full uppercase tracking-wider mb-2">
+                Official Assessment Report &bull; GTH SAS
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">
+                Result for: <span id="res-candidate-name" class="text-emerald-700">Aprendiz</span>
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-500 mt-1">
+                Date / Fecha: <span id="res-date">Today</span> &bull; Group / ID (Ficha / Cédula): <span id="res-id" class="font-mono text-slate-700">2715420</span>
+              </p>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+              <!-- PRIMARY SCORE BADGE -->
+              <div class="bg-emerald-50 border border-emerald-200 rounded-xl px-5 py-3 text-center min-w-[140px]">
+                <span class="block text-xs font-bold uppercase tracking-wider text-emerald-800">Overall Score / Puntaje</span>
+                <span id="res-overall-score" class="text-3xl font-black text-emerald-900">92%</span>
+                <span id="res-points" class="block text-[11px] text-emerald-700 font-medium mt-0.5">33 / 36 pts</span>
+              </div>
+
+              <!-- GRAMMAR ACCURACY BADGE -->
+              <div class="bg-blue-50 border border-blue-200 rounded-xl px-5 py-3 text-center min-w-[140px]">
+                <span class="block text-xs font-bold uppercase tracking-wider text-blue-800">A2 Grammar / Gramática</span>
+                <span id="res-grammar-score" class="text-3xl font-black text-blue-900">100%</span>
+                <span class="block text-[11px] text-blue-700 font-medium mt-0.5">Use of Do &amp; Does / Uso de Do y Does</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- QUALIFICATION STATUS ALERT -->
+          <div id="qualification-banner" class="mt-6 p-4 rounded-xl border flex items-start space-x-3 bg-emerald-50 border-emerald-300 text-emerald-950">
+            <div class="p-1 rounded-full bg-emerald-200 text-emerald-800 shrink-0 mt-0.5">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <div>
+              <h4 id="status-headline" class="font-bold text-sm sm:text-base">Estado: APTO PARA EL CARGO (QUALIFIED)</h4>
+              <p id="status-detail" class="text-xs sm:text-sm text-emerald-900 mt-0.5">
+                ¡Felicitaciones! Has demostrado excelente criterio en las situaciones de Talento Humano y un uso correcto de las preguntas en inglés.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DETAILED FIT ACROSS ALL 6 GTH SAS ROLES -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8">
+          <h3 class="text-lg font-bold text-slate-900 mb-1">
+            Affinity Across the 6 GTH SAS Roles <span class="text-emerald-700 font-semibold text-sm">/ Porcentaje de Afinidad con los 6 Cargos</span>
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-500 mb-6">
+            Based on your choices, this chart shows your strongest HR areas / Basado en tus elecciones, muestra tus áreas más fuertes:
+          </p>
+
+          <div id="roles-score-list" class="space-y-4">
+            <!-- Dynamic 6 Roles progress cards injected via JS -->
+          </div>
+        </div>
+
+        <!-- PRIMARY MATCH DEEP-DIVE -->
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8">
+          <div class="flex items-center space-x-3 mb-4">
+            <span class="text-3xl" id="match-icon">&#128640;</span>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-700">Your Best Match at GTH SAS / Tu Cargo Más Compatible</span>
+              <h3 id="match-role-title" class="text-xl font-bold text-slate-900">Auxiliar de Reclutamiento y Selección</h3>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+              <h4 class="font-bold text-slate-800 mb-2 flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
+                <span>Key Responsibilities / Responsabilidades Principales:</span>
+              </h4>
+              <p id="match-superpower" class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                Revisar hojas de vida, contactar candidatos, verificar referencias y aplicar filtros de selección.
+              </p>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
+              <h4 class="font-bold text-slate-800 mb-2 flex items-center space-x-2">
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                <span>Key English Questions / Preguntas Clave en Inglés:</span>
+              </h4>
+              <p id="match-english-key" class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                <em>"Do you have experience in customer service?"</em> / <em>"Does she speak English?"</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-6 p-4 bg-emerald-50 rounded-lg border border-emerald-200">
+            <h4 class="font-bold text-emerald-950 text-sm mb-1">Recommendation for You / Recomendación para ti:</h4>
+            <p id="match-recommendation" class="text-xs sm:text-sm text-emerald-900 leading-relaxed">
+              Practica formular preguntas de entrevista con <em>Do you...</em> y describir las tareas del área usando el verbo <em>To Be</em> en presente y futuro (<em>"I am in recruitment", "I will be an HR coordinator"</em>).
+            </p>
+          </div>
+        </div>
+
+        <!-- ACTION BUTTONS -->
+        <div class="flex flex-wrap items-center justify-between gap-4 bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+          <button id="retake-test-btn" class="px-5 py-2.5 border border-slate-300 rounded-lg text-sm font-semibold text-slate-700 hover:bg-slate-50 transition">
+            &larr; Retake Test
+          </button>
+          
+          <div class="flex items-center space-x-3">
+            <button id="copy-summary-btn" class="px-5 py-2.5 bg-slate-800 text-white rounded-lg text-sm font-semibold hover:bg-slate-700 shadow-sm transition flex items-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+              <span>Copy Results</span>
+            </button>
+            <button id="print-btn" class="px-5 py-2.5 bg-emerald-600 text-white rounded-lg text-sm font-semibold hover:bg-emerald-700 shadow-sm transition flex items-center space-x-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+              <span>Print / Save PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <div id="copy-toast" class="hidden fixed bottom-6 right-6 bg-slate-900 text-white text-xs px-4 py-2.5 rounded-lg shadow-xl font-medium fade-in z-50">
+          ¡Ficha de resultados copiada al portapapeles!
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VIEW 2: ROLES CATALOG -->
+    <div id="view-roles" class="hidden space-y-6">
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8">
+        <div class="flex items-center space-x-2 mb-2">
+          <span class="px-2.5 py-1 bg-emerald-100 text-emerald-800 text-xs font-bold rounded uppercase">GTH SAS Org Chart / Organigrama</span>
+          <span class="text-xs text-slate-500">27 Trainees / 27 Aprendices</span>
+        </div>
+        <h2 class="text-2xl font-extrabold text-slate-900 mb-2">The 6 Key HR Roles <span class="text-emerald-700 font-semibold text-lg block sm:inline">/ Los 6 Roles Clave de Talento Humano</span></h2>
+        <p class="text-sm text-slate-600 mb-6">
+          Explore each area of the GTH SAS org chart, daily tasks, and typical English questions / Conoce cada área del organigrama, sus funciones y preguntas típicas en inglés:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="catalog-grid">
+          <!-- Dynamic Role Cards Injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- VIEW 3: A2 GUIDE & HELP -->
+    <div id="view-guide" class="hidden space-y-6">
+      <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 sm:p-8 space-y-4">
+        <h2 class="text-2xl font-extrabold text-slate-900">A2 Grammar Guide: How to Use Do &amp; Does in HR <span class="text-emerald-700 font-semibold text-lg block sm:inline">/ Guía Gramatical A2: ¿Cómo Usar Do y Does?</span></h2>
+        
+        <div class="prose text-slate-600 text-sm leading-relaxed space-y-3">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+            <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
+              <h3 class="font-bold text-emerald-900 text-base mb-1">Using DO / Uso de DO</h3>
+              <p class="text-xs text-emerald-800 mb-2">Used with: <strong>I, You, We, They</strong> <span class="italic">(Se usa con: I, You, We, They)</span></p>
+              <ul class="text-xs space-y-1 text-slate-700 list-disc pl-4">
+                <li><em>Do you check the candidate CVs?</em><br><span class="text-slate-500">(¿Revisas las hojas de vida de los candidatos?)</span></li>
+                <li><em>Do they work in the payroll office?</em><br><span class="text-slate-500">(¿Ellos trabajan en la oficina de nómina?)</span></li>
+              </ul>
+            </div>
+
+            <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <h3 class="font-bold text-blue-900 text-base mb-1">Using DOES / Uso de DOES</h3>
+              <p class="text-xs text-blue-800 mb-2">Used with 3rd person: <strong>He, She, It</strong> <span class="italic">(Se usa con: He, She, It)</span></p>
+              <ul class="text-xs space-y-1 text-slate-700 list-disc pl-4">
+                <li><em>Does she organize the safety drills?</em><br><span class="text-slate-500">(¿Ella organiza los simulacros de seguridad?)</span></li>
+                <li><em>Does the assistant calculate overtime?</em><br><span class="text-slate-500">(¿El asistente calcula las horas extras?)</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-3 bg-slate-100 rounded-lg text-xs text-slate-700">
+            <strong>Golden Rule / ¡Regla de Oro!</strong> When using <strong>DOES</strong>, the main verb stays in its base form (no '-s'): <em>"Does she work?"</em> (correct), NEVER <em>"Does she works?"</em>. <span class="block text-slate-500 italic mt-1">Cuando usas DOES, el verbo principal vuelve a su forma base sin 's'.</span>
+          </div>
+
+          <h3 class="text-base font-bold text-slate-900 pt-2">GTH SAS Vocabulary Dictionary / Diccionario GTH SAS (A2):</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
+            <div class="bg-slate-50 p-2 rounded border"><strong>Payroll:</strong> Nómina</div>
+            <div class="bg-slate-50 p-2 rounded border"><strong>Overtime:</strong> Horas extras</div>
+            <div class="bg-slate-50 p-2 rounded border"><strong>Resume / CV:</strong> Hoja de vida</div>
+            <div class="bg-slate-50 p-2 rounded border"><strong>Induction:</strong> Inducción laboral</div>
+            <div class="bg-slate-50 p-2 rounded border"><strong>Active breaks:</strong> Pausas activas</div>
+            <div class="bg-slate-50 p-2 rounded border"><strong>File / Archive:</strong> Archivar documentos</div>
+            <div class="bg-slate-50 p-2 rounded border"><strong>Safety gear (PPE):</strong> Equipos de protección</div>
+            <div class="bg-slate-50 p-2 rounded border"><strong>Attendance:</strong> Asistencia / Horarios</div>
+            <div class="bg-slate-50 p-2 rounded border"><strong>Training:</strong> Capacitación</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-100 border-t border-slate-200 py-6 text-center text-xs text-slate-500">
+    <p>GTH SAS &bull; Human Resources / Gestión de Talento Humano (27 Trainees / 27 Aprendices) &bull; SENA &bull; A2 Technical English Learning Material / Material Pedagógico de Inglés Técnico A2</p>
+  </footer>
+
+  <!-- DATA & APPLICATION LOGIC -->
+  <script>
+    // --- 6 EXACT ROLES FROM GTH SAS ORGANIGRAM ---
+    const JOB_ROLES = {
+      rec: {
+        id: "rec",
+        title: "Recruitment & Selection Assistant / Auxiliar de Reclutamiento y Selección",
+        shortTitle: "Recruitment & Selection / Reclutamiento",
+        icon: "🔍",
+        color: "emerald",
+        barClass: "bg-emerald-600",
+        superpower: "Reviewing CVs, scheduling interviews, checking references, and pre-screening candidates. / Revisión de hojas de vida, citación a entrevistas, verificación de antecedentes y preselección.",
+        englishFocus: "Interview questions / Preguntas de entrevista: 'Do you have customer service experience?', 'Does she have valid certifications?'",
+        sampleQuestion: "Do you call the candidates to confirm their interview schedule?",
+        description: "Supports hiring new staff for GTH SAS, analyzes profiles, and verifies job references. / Apoya la búsqueda de nuevo personal, analiza perfiles y verifica referencias."
+      },
+      nom: {
+        id: "nom",
+        title: "Payroll Area (Analyst / Assistant / Clerk) / Área de Nómina",
+        shortTitle: "Payroll & Attendance / Nómina",
+        icon: "💵",
+        color: "blue",
+        barClass: "bg-blue-600",
+        superpower: "Calculating overtime, attendance updates, salary payments, and legal deductions. / Cálculo de horas extras, novedades de asistencia, liquidación de pagos y deducciones.",
+        englishFocus: "Payroll control questions / Preguntas de control: 'Does the payroll report include overtime?', 'Do we deduct health and pension?'",
+        sampleQuestion: "Does he calculate the extra hours and night shifts on the 15th?",
+        description: "Ensures employee salaries at GTH SAS are paid accurately and on time. / Garantiza que el pago de salarios se realice de forma exacta y puntual."
+      },
+      sst: {
+        id: "sst",
+        title: "Occupational Health & Safety (OHS) / Área de SST",
+        shortTitle: "Health & Safety (OHS / SST)",
+        icon: "🦺",
+        color: "amber",
+        barClass: "bg-amber-600",
+        superpower: "Workstation inspections, PPE checks, emergency brigades, and risk prevention. / Inspecciones de puestos, revisión de EPP, brigadas y prevención de riesgos.",
+        englishFocus: "Safety inspection questions / Preguntas de seguridad: 'Do employees wear helmets in the warehouse?', 'Does she report workplace hazards?'",
+        sampleQuestion: "Do you inspect the fire extinguishers and emergency exits every month?",
+        description: "Protects the life, health, and physical well-being of all GTH SAS workers. / Protege la vida, salud y bienestar físico de todos los colaboradores."
+      },
+      cap: {
+        id: "cap",
+        title: "Training & Performance Assistant / Auxiliar de Capacitación y Desempeño",
+        shortTitle: "Training & Performance / Capacitación",
+        icon: "🎓",
+        color: "purple",
+        barClass: "bg-purple-600",
+        superpower: "Organizing onboarding workshops, training sessions, and performance evaluations. / Organización de inducciones, talleres de formación y encuestas de evaluación.",
+        englishFocus: "Training & evaluation questions / Preguntas de evaluación: 'Does the instructor explain the lesson clearly?', 'Do employees complete the evaluation?'",
+        sampleQuestion: "Do you organize the induction workshop for the new apprentice group?",
+        description: "Develops trainees' job skills and evaluates periodic performance in the company. / Desarrolla competencias laborales y evalúa el rendimiento periódico."
+      },
+      bie: {
+        id: "bie",
+        title: "Employee Well-being Assistant / Auxiliar de Bienestar Laboral",
+        shortTitle: "Employee Well-being / Bienestar",
+        icon: "🎉",
+        color: "rose",
+        barClass: "bg-rose-600",
+        superpower: "Planning birthdays, active breaks, family events, and positive workplace climate programs. / Planeación de cumpleaños, pausas activas, celebraciones y clima laboral positivo.",
+        englishFocus: "Events & motivation questions / Preguntas de motivación: 'Do you prepare the birthday cards?', 'Does the team participate in active breaks?'",
+        sampleQuestion: "Does she organize the team-building games and wellness activities?",
+        description: "Promotes a happy, healthy, motivating, and collaborative work environment. / Promueve un ambiente de trabajo feliz, saludable y motivante."
+      },
+      doc: {
+        id: "doc",
+        title: "Document Management & Archive Assistant / Gestión Documental y Archivo",
+        shortTitle: "Document Management / Archivo",
+        icon: "📁",
+        color: "slate",
+        barClass: "bg-slate-700",
+        superpower: "Managing employment contracts, indexing worker files, digitization, and data privacy. / Custodia de contratos, foliado de historias laborales, digitalización y confidencialidad.",
+        englishFocus: "Filing & records questions / Preguntas de archivo: 'Do you file the signed contracts in the folder?', 'Does he scan the medical certificates?'",
+        sampleQuestion: "Does she organize the employee files in alphabetical order in the digital drive?",
+        description: "Manages and protects legal documents and employee records across the organization. / Administra y protege los documentos y expedientes legales."
+      }
+    };
+
+    // --- 12 SITUATIONAL QUESTIONS FOR GTH SAS (A2 LEVEL WITH DO & DOES) ---
+    const QUESTIONS = [
+      {
+        id: 1,
+        category: "Do vs. Does & Daily Morning Routine",
+        title: "Situación 1: Inicio de la Jornada Laboral en GTH SAS",
+        scenarioEn: "You arrive at the GTH SAS office at 8:00 AM. What is your first priority task for the day?",
+        scenarioEs: "Llegas a la oficina de GTH SAS a las 8:00 AM. ¿Cuál es tu primera tarea prioritaria del día?",
+        options: [
+          {
+            text: "Do you review the candidate CVs and check the interview schedule for today?",
+            textEs: "¿Revisas las hojas de vida de los candidatos y la agenda de entrevistas de hoy?",
+            grammar: "do",
+            roleScores: { rec: 3, cap: 1, doc: 1, nom: 0, sst: 0, bie: 0 }
+          },
+          {
+            text: "Do you check the employee attendance records and calculate pending overtime hours?",
+            textEs: "¿Revisas los registros de asistencia y calculas las horas extras pendientes?",
+            grammar: "do",
+            roleScores: { nom: 3, doc: 1, sst: 0, rec: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you inspect the first-aid kit and verify safety conditions in the work area?",
+            textEs: "¿Inspeccionas el botiquín de primeros auxilios y las condiciones de seguridad?",
+            grammar: "do",
+            roleScores: { sst: 3, bie: 1, nom: 0, rec: 0, cap: 0, doc: 0 }
+          },
+          {
+            text: "Do you prepare the birthday calendar and plan the active break for the morning?",
+            textEs: "¿Preparas el calendario de cumpleaños y planeas la pausa activa de la mañana?",
+            grammar: "do",
+            roleScores: { bie: 3, cap: 1, sst: 1, rec: 0, nom: 0, doc: 0 }
+          }
+        ]
+      },
+      {
+        id: 2,
+        category: "Does in Third-Person Singular (He/She)",
+        title: "Situación 2: El Proceso de Selección de Personal",
+        scenarioEn: "A new job vacancy opens for GTH SAS. How does your colleague manage the candidate selection?",
+        scenarioEs: "Se abre una nueva vacante en GTH SAS. ¿Cómo gestiona tu compañera la selección del candidato?",
+        options: [
+          {
+            text: "Does she call the preselected candidates and verify their job references by phone?",
+            textEs: "¿Ella llama a los candidatos preseleccionados y verifica sus referencias laborales por teléfono?",
+            grammar: "does",
+            roleScores: { rec: 3, doc: 1, cap: 1, nom: 0, sst: 0, bie: 0 }
+          },
+          {
+            text: "Does she file the applicant resumes in the confidential digital archive folder?",
+            textEs: "¿Ella archiva las hojas de vida en la carpeta digital confidencial?",
+            grammar: "does",
+            roleScores: { doc: 3, rec: 1, nom: 1, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Does she verify if the job position requires special safety equipment and medical exams?",
+            textEs: "¿Ella verifica si el puesto requiere equipos de seguridad y exámenes médicos de ingreso?",
+            grammar: "does",
+            roleScores: { sst: 3, rec: 1, nom: 0, doc: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Does she prepare the salary and transport allowance calculation for the employment contract?",
+            textEs: "¿Ella prepara el cálculo de salario y auxilio de transporte para el contrato de trabajo?",
+            grammar: "does",
+            roleScores: { nom: 3, doc: 1, rec: 1, sst: 0, cap: 0, bie: 0 }
+          }
+        ]
+      },
+      {
+        id: 3,
+        category: "Do & Payroll Days",
+        title: "Situación 3: Día de Cierre de Nómina (Quincena)",
+        scenarioEn: "It is the 15th day of the month (payroll cutoff). What do you do to ensure correct payments?",
+        scenarioEs: "Es día 15 del mes (cierre de nómina). ¿Qué haces para garantizar pagos correctos?",
+        options: [
+          {
+            text: "Do you calculate the total overtime hours and night shift bonuses in the spreadsheet?",
+            textEs: "¿Calculas el total de horas extras y recargos nocturnos en la hoja de cálculo?",
+            grammar: "do",
+            roleScores: { nom: 3, doc: 1, rec: 0, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you organize the signed physical payment receipts in the employee folder?",
+            textEs: "¿Organizas los comprobantes de pago firmados en la carpeta de cada trabajador?",
+            grammar: "do",
+            roleScores: { doc: 3, nom: 2, rec: 0, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you inform employees about social security (EPS and Pension) deductions clearly?",
+            textEs: "¿Informas a los empleados sobre los descuentos de seguridad social (EPS y Pensión)?",
+            grammar: "do",
+            roleScores: { nom: 3, bie: 1, rec: 0, sst: 0, cap: 0, doc: 0 }
+          },
+          {
+            text: "Do you plan a healthy snack celebration to celebrate the payday with the team?",
+            textEs: "¿Planeas un refrigerio saludable para celebrar el día de pago con el equipo?",
+            grammar: "do",
+            roleScores: { bie: 3, cap: 0, sst: 1, nom: 0, rec: 0, doc: 0 }
+          }
+        ]
+      },
+      {
+        id: 4,
+        category: "Does & Workplace Safety (SST)",
+        title: "Situación 4: Prevención y Salud en el Trabajo",
+        scenarioEn: "An employee reports a slippery floor near the storage room. How does the SST assistant react?",
+        scenarioEs: "Un empleado reporta piso resbaloso cerca de la bodega. ¿Cómo reacciona el auxiliar de SST?",
+        options: [
+          {
+            text: "Does he place a yellow warning sign immediately and report the spill to cleaning services?",
+            textEs: "¿Él coloca una señal amarilla de advertencia de inmediato y reporta el derrame?",
+            grammar: "does",
+            roleScores: { sst: 3, bie: 1, doc: 0, nom: 0, rec: 0, cap: 0 }
+          },
+          {
+            text: "Does he write an incident report and archive it in the occupational health record?",
+            textEs: "¿Él escribe un reporte de incidente y lo archiva en el registro de salud ocupacional?",
+            grammar: "does",
+            roleScores: { doc: 3, sst: 2, nom: 0, rec: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Does he organize a quick 5-minute safety talk with warehouse workers about personal protection?",
+            textEs: "¿Él organiza una charla de 5 minutos sobre seguridad y protección con los operarios?",
+            grammar: "does",
+            roleScores: { cap: 3, sst: 2, bie: 1, nom: 0, rec: 0, doc: 0 }
+          },
+          {
+            text: "Does he verify if the employee has active medical insurance in case of an accident?",
+            textEs: "¿Él verifica si el empleado tiene EPS y ARL activa en caso de accidente?",
+            grammar: "does",
+            roleScores: { nom: 3, sst: 2, doc: 1, rec: 0, cap: 0, bie: 0 }
+          }
+        ]
+      },
+      {
+        id: 5,
+        category: "Do & Induction for New Hires",
+        title: "Situación 5: Inducción de Nuevos Empleados",
+        scenarioEn: "Five new apprentices start their internship at GTH SAS on Monday. What do you prepare for them?",
+        scenarioEs: "Cinco nuevos aprendices inician su etapa productiva el lunes. ¿Qué preparas para ellos?",
+        options: [
+          {
+            text: "Do you design the welcome slides and schedule the company induction training modules?",
+            textEs: "¿Diseñas las diapositivas de bienvenida y programas los módulos de capacitación de inducción?",
+            grammar: "do",
+            roleScores: { cap: 3, bie: 1, rec: 1, doc: 0, nom: 0, sst: 0 }
+          },
+          {
+            text: "Do you prepare the employment contracts and collect their personal identity documents?",
+            textEs: "¿Preparas los contratos de aprendizaje y recibes los documentos de identidad?",
+            grammar: "do",
+            roleScores: { doc: 3, nom: 2, rec: 1, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you deliver their safety equipment (helmets, vests, badges) and explain workplace rules?",
+            textEs: "¿Les entregas sus elementos de protección (cascos, chalecos, carnets) y explicas las normas?",
+            grammar: "do",
+            roleScores: { sst: 3, cap: 1, doc: 0, nom: 0, rec: 0, bie: 0 }
+          },
+          {
+            text: "Do you organize an icebreaker game and introduce them to the team with a welcome message?",
+            textEs: "¿Organizas una dinámica de integración y los presentas ante el equipo de trabajo?",
+            grammar: "do",
+            roleScores: { bie: 3, cap: 2, rec: 1, doc: 0, nom: 0, sst: 0 }
+          }
+        ]
+      },
+      {
+        id: 6,
+        category: "Does & Employee Well-being (Bienestar)",
+        title: "Situación 6: Clima Laboral y Pausas Activas",
+        scenarioEn: "It is 3:00 PM and the administrative team looks tired after long computer work. What does the wellness coordinator do?",
+        scenarioEs: "Son las 3:00 PM y el equipo administrativo luce cansado frente al computador. ¿Qué hace el coordinador de bienestar?",
+        options: [
+          {
+            text: "Does she guide a 10-minute active pause with ergonomic stretching and joyful music?",
+            textEs: "¿Ella lidera una pausa activa de 10 minutos con estiramientos ergonómicos y música alegre?",
+            grammar: "does",
+            roleScores: { bie: 3, sst: 2, cap: 1, doc: 0, nom: 0, rec: 0 }
+          },
+          {
+            text: "Does she inspect chair heights and monitor positions to prevent back injuries?",
+            textEs: "¿Ella inspecciona la altura de las sillas y monitores para prevenir lesiones de espalda?",
+            grammar: "does",
+            roleScores: { sst: 3, bie: 1, cap: 0, doc: 0, nom: 0, rec: 0 }
+          },
+          {
+            text: "Does she announce the winners of the monthly employee recognition award?",
+            textEs: "¿Ella anuncia a los ganadores del reconocimiento al empleado del mes?",
+            grammar: "does",
+            roleScores: { bie: 3, cap: 2, rec: 0, doc: 0, nom: 0, sst: 0 }
+          },
+          {
+            text: "Does she schedule a digital ergonomics workshop for next Friday?",
+            textEs: "¿Ella programa un taller de ergonomía digital para el próximo viernes?",
+            grammar: "does",
+            roleScores: { cap: 3, sst: 2, bie: 1, doc: 0, nom: 0, rec: 0 }
+          }
+        ]
+      },
+      {
+        id: 7,
+        category: "Do & Document Archive (Gestión Documental)",
+        title: "Situación 7: Organización de Historias Laborales",
+        scenarioEn: "The HR Director requests the complete physical and digital file of an employee. What do you do?",
+        scenarioEs: "La Directora de Talento Humano solicita el expediente laboral completo de un colaborador. ¿Qué haces?",
+        options: [
+          {
+            text: "Do you locate the numbered folder in the archive and verify that all contract pages are signed?",
+            textEs: "¿Ubicas la carpeta foliada en el archivo y verificas que todas las hojas del contrato estén firmadas?",
+            grammar: "do",
+            roleScores: { doc: 3, nom: 1, rec: 1, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you check if the employee completed the mandatory annual performance evaluation form?",
+            textEs: "¿Verificas si el empleado diligenció el formulario anual de evaluación del desempeño?",
+            grammar: "do",
+            roleScores: { cap: 3, doc: 1, rec: 0, nom: 0, sst: 0, bie: 0 }
+          },
+          {
+            text: "Do you verify the employee's current salary certificate and bank account details?",
+            textEs: "¿Verificas el certificado salarial actual y los datos de cuenta bancaria del empleado?",
+            grammar: "do",
+            roleScores: { nom: 3, doc: 1, rec: 0, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you confirm that the employee attended the occupational medical check-up?",
+            textEs: "¿Confirmas que el empleado haya asistido al examen médico ocupacional periódico?",
+            grammar: "do",
+            roleScores: { sst: 3, doc: 1, nom: 0, rec: 0, cap: 0, bie: 0 }
+          }
+        ]
+      },
+      {
+        id: 8,
+        category: "Does & Performance Review",
+        title: "Situación 8: Evaluación del Desempeño Laboral",
+        scenarioEn: "A team leader wants to evaluate the goals of her junior apprentices. How does she conduct the process?",
+        scenarioEs: "Una líder de área desea evaluar los objetivos de sus aprendices. ¿Cómo conduce el proceso?",
+        options: [
+          {
+            text: "Does she schedule a constructive feedback session and discuss professional improvement goals?",
+            textEs: "¿Ella programa una sesión de retroalimentación constructiva y acuerda metas de mejora?",
+            grammar: "does",
+            roleScores: { cap: 3, bie: 1, rec: 1, doc: 0, nom: 0, sst: 0 }
+          },
+          {
+            text: "Does she review if the high performance qualifies the apprentice for an incentive bonus in payroll?",
+            textEs: "¿Ella revisa si el buen desempeño califica al aprendiz para una bonificación en nómina?",
+            grammar: "does",
+            roleScores: { nom: 3, cap: 1, doc: 0, sst: 0, rec: 0, bie: 0 }
+          },
+          {
+            text: "Does she archive the signed evaluation format in the employee's official personnel record?",
+            textEs: "¿Ella archiva el formato firmado de evaluación en la historia laboral oficial?",
+            grammar: "does",
+            roleScores: { doc: 3, cap: 1, nom: 0, rec: 0, sst: 0, bie: 0 }
+          },
+          {
+            text: "Does she prepare a congratulation certificate and share it during the team meeting?",
+            textEs: "¿Ella prepara un certificado de felicitación y lo comparte en la reunión de equipo?",
+            grammar: "does",
+            roleScores: { bie: 3, cap: 2, rec: 0, doc: 0, nom: 0, sst: 0 }
+          }
+        ]
+      },
+      {
+        id: 9,
+        category: "Do & Recruitment Screening",
+        title: "Situación 9: Entrevista Telefónica de Filtro",
+        scenarioEn: "You conduct a 5-minute phone interview with an applicant for a customer service role. What do you ask?",
+        scenarioEs: "Haces una entrevista telefónica de 5 minutos con un postulante para atención al cliente. ¿Qué le preguntas?",
+        options: [
+          {
+            text: "Do you ask: 'Do you speak conversational English and do you have experience answering calls?'",
+            textEs: "¿Le preguntas: '¿Hablas inglés conversacional y tienes experiencia atendiendo llamadas?'?",
+            grammar: "do",
+            roleScores: { rec: 3, cap: 1, bie: 1, doc: 0, nom: 0, sst: 0 }
+          },
+          {
+            text: "Do you ask: 'Do you accept the offered monthly salary and working hours from Monday to Friday?'",
+            textEs: "¿Le preguntas: '¿Aceptas el salario mensual ofrecido y el horario de lunes a viernes?'?",
+            grammar: "do",
+            roleScores: { nom: 3, rec: 2, doc: 0, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you ask: 'Do you bring your updated resume and recommendation letters in a sealed envelope?'",
+            textEs: "¿Le preguntas: '¿Traes tu hoja de vida actualizada y cartas de recomendación en sobre cerrado?'?",
+            grammar: "do",
+            roleScores: { doc: 3, rec: 2, nom: 0, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you ask: 'Do you have training certificates in workplace safety and hazard prevention?'",
+            textEs: "¿Le preguntas: '¿Tienes certificados de capacitación en seguridad laboral y prevención de riesgos?'?",
+            grammar: "do",
+            roleScores: { sst: 3, cap: 2, rec: 1, doc: 0, nom: 0, bie: 0 }
+          }
+        ]
+      },
+      {
+        id: 10,
+        category: "Does & Emergency Drills (SST)",
+        title: "Situación 10: Simulacro Nacional de Evacuación",
+        scenarioEn: "GTH SAS participates in an emergency evacuation drill. How does the safety brigade leader coordinate?",
+        scenarioEs: "GTH SAS participa en el simulacro de evacuación. ¿Cómo coordina el líder de la brigada de emergencia?",
+        options: [
+          {
+            text: "Does he guide all 27 apprentices through the emergency stairs to the safe meeting point?",
+            textEs: "¿Él guía a los 27 aprendices por las escaleras de emergencia hacia el punto de encuentro?",
+            grammar: "does",
+            roleScores: { sst: 3, bie: 1, cap: 1, nom: 0, rec: 0, doc: 0 }
+          },
+          {
+            text: "Does he call roll attendance with the official employee list to ensure nobody stays inside?",
+            textEs: "¿Él pasa lista con la lista oficial de asistencia para verificar que nadie quede adentro?",
+            grammar: "does",
+            roleScores: { doc: 3, sst: 2, nom: 1, rec: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Does he provide hydration water and calm down nervous employees with empathy?",
+            textEs: "¿Él suministra agua para hidratación y tranquiliza con empatía a los colaboradores nerviosos?",
+            grammar: "does",
+            roleScores: { bie: 3, sst: 2, cap: 0, doc: 0, nom: 0, rec: 0 }
+          },
+          {
+            text: "Does he write a training report evaluating the total evacuation time in minutes?",
+            textEs: "¿Él redacta un reporte de capacitación evaluando el tiempo total de evacuación en minutos?",
+            grammar: "does",
+            roleScores: { cap: 3, sst: 2, doc: 1, nom: 0, rec: 0, bie: 0 }
+          }
+        ]
+      },
+      {
+        id: 11,
+        category: "Do & Employee Inquiries",
+        title: "Situación 11: Atención de Dudas al Trabajador",
+        scenarioEn: "An employee visits the Human Resources office with a question about their pay stub. What do you do?",
+        scenarioEs: "Un trabajador llega a la oficina de Talento Humano con dudas sobre su desprendible de pago. ¿Qué haces?",
+        options: [
+          {
+            text: "Do you explain the difference between base salary, deductions, and net paid value with patience?",
+            textEs: "¿Le explicas con paciencia la diferencia entre salario básico, deducciones y valor neto pagado?",
+            grammar: "do",
+            roleScores: { nom: 3, bie: 1, doc: 0, rec: 0, sst: 0, cap: 0 }
+          },
+          {
+            text: "Do you print a copy of the official payroll receipt from the digital management software?",
+            textEs: "¿Le imprimes una copia del comprobante oficial de nómina desde el software de gestión?",
+            grammar: "do",
+            roleScores: { doc: 3, nom: 2, rec: 0, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you ask if the worker needs medical support or counseling for personal difficulties?",
+            textEs: "¿Le preguntas si el trabajador necesita apoyo médico o asesoría por dificultades personales?",
+            grammar: "do",
+            roleScores: { bie: 3, sst: 1, nom: 0, rec: 0, cap: 0, doc: 0 }
+          },
+          {
+            text: "Do you offer information about upcoming training courses to increase salary opportunities?",
+            textEs: "¿Le ofreces información sobre los próximos cursos de capacitación para mejorar sus ingresos?",
+            grammar: "do",
+            roleScores: { cap: 3, rec: 1, nom: 0, doc: 0, sst: 0, bie: 0 }
+          }
+        ]
+      },
+      {
+        id: 12,
+        category: "Do & Professional Aspiration in GTH SAS",
+        title: "Situation 12: Your Future in HR / Tu Futuro en Talento Humano",
+        scenarioEn: "Looking forward to your graduation, what do you want to do in your ideal GTH SAS career?",
+        scenarioEs: "Proyectando tu graduación profesional, ¿qué quieres hacer en tu carrera soñada en GTH SAS?",
+        options: [
+          {
+            text: "Do you lead the recruitment and talent acquisition department to find top candidates?",
+            textEs: "¿Lideras el área de selección y atracción de talento para encontrar los mejores candidatos?",
+            grammar: "do",
+            roleScores: { rec: 3, cap: 1, bie: 0, nom: 0, sst: 0, doc: 0 }
+          },
+          {
+            text: "Do you direct the payroll and compensation strategy to ensure fair benefits for all workers?",
+            textEs: "¿Diriges la estrategia de nómina y compensación garantizando beneficios justos para todos?",
+            grammar: "do",
+            roleScores: { nom: 3, doc: 1, rec: 0, sst: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you coordinate the health, safety (OHS/SST), and ergonomics program to protect lives daily?",
+            textEs: "¿Coordinas el programa de seguridad (SST) y ergonomía para proteger vidas diariamente?",
+            grammar: "do",
+            roleScores: { sst: 3, doc: 1, rec: 0, nom: 0, cap: 0, bie: 0 }
+          },
+          {
+            text: "Do you foster employee happiness, training workshops, and team well-being across the company?",
+            textEs: "¿Promueves la felicidad laboral, talleres de capacitación y el bienestar en toda la empresa?",
+            grammar: "do",
+            roleScores: { bie: 3, cap: 3, rec: 0, nom: 0, sst: 0, doc: 0 }
+          }
+        ]
+      }
+    ];
+
+    // --- APPLICATION STATE ---
+    let currentMode = "multi"; // "multi" or "targeted"
+    let targetRoleId = "rec";
+    let candidateName = "";
+    let candidateId = "";
+    let currentQuestionIndex = 0;
+    let userAnswers = {}; // { questionId: optionIndex }
+
+    // --- DOM REFERENCES ---
+    const navTestBtn = document.getElementById("nav-test-btn");
+    const navRolesBtn = document.getElementById("nav-roles-btn");
+    const navGuideBtn = document.getElementById("nav-guide-btn");
+
+    const viewTest = document.getElementById("view-test");
+    const viewRoles = document.getElementById("view-roles");
+    const viewGuide = document.getElementById("view-guide");
+
+    const setupCard = document.getElementById("setup-card");
+    const testRunner = document.getElementById("test-runner");
+    const resultsDashboard = document.getElementById("results-dashboard");
+
+    const modeCardMulti = document.getElementById("mode-card-multi");
+    const modeCardTargeted = document.getElementById("mode-card-targeted");
+    const modeMultiRadio = document.getElementById("mode-multi");
+    const modeTargetedRadio = document.getElementById("mode-targeted");
+    const targetRoleContainer = document.getElementById("target-role-container");
+    const targetRoleSelect = document.getElementById("target-role-select");
+
+    const candidateNameInput = document.getElementById("candidate-name");
+    const candidateIdInput = document.getElementById("candidate-id");
+    const startTestBtn = document.getElementById("start-test-btn");
+
+    // Runner Elements
+    const progressText = document.getElementById("progress-text");
+    const progressPercent = document.getElementById("progress-percent");
+    const progressBarFill = document.getElementById("progress-bar-fill");
+    const activeModeLabel = document.getElementById("active-mode-label");
+    const activeTargetBadge = document.getElementById("active-target-badge");
+    const activeTargetName = document.getElementById("active-target-name");
+
+    const qCategoryTag = document.getElementById("q-category-tag");
+    const qRoleTag = document.getElementById("q-role-tag");
+    const qTitle = document.getElementById("q-title");
+    const qScenario = document.getElementById("q-scenario");
+    const qScenarioEs = document.getElementById("q-scenario-es");
+    const optionsContainer = document.getElementById("options-container");
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const validationHint = document.getElementById("validation-hint");
+
+    // Results Elements
+    const resCandidateName = document.getElementById("res-candidate-name");
+    const resDate = document.getElementById("res-date");
+    const resId = document.getElementById("res-id");
+    const resOverallScore = document.getElementById("res-overall-score");
+    const resPoints = document.getElementById("res-points");
+    const resGrammarScore = document.getElementById("res-grammar-score");
+    const qualificationBanner = document.getElementById("qualification-banner");
+    const statusHeadline = document.getElementById("status-headline");
+    const statusDetail = document.getElementById("status-detail");
+    const rolesScoreList = document.getElementById("roles-score-list");
+
+    const matchIcon = document.getElementById("match-icon");
+    const matchRoleTitle = document.getElementById("match-role-title");
+    const matchSuperpower = document.getElementById("match-superpower");
+    const matchEnglishKey = document.getElementById("match-english-key");
+    const matchRecommendation = document.getElementById("match-recommendation");
+
+    const retakeTestBtn = document.getElementById("retake-test-btn");
+    const copySummaryBtn = document.getElementById("copy-summary-btn");
+    const printBtn = document.getElementById("print-btn");
+    const copyToast = document.getElementById("copy-toast");
+    const catalogGrid = document.getElementById("catalog-grid");
+
+    // --- NAVIGATION LOGIC ---
+    function switchView(target) {
+      viewTest.classList.add("hidden");
+      viewRoles.classList.add("hidden");
+      viewGuide.classList.add("hidden");
+
+      navTestBtn.className = "px-3 py-1.5 rounded-md font-medium text-emerald-100 bg-emerald-800 hover:bg-emerald-700 transition";
+      navRolesBtn.className = "px-3 py-1.5 rounded-md font-medium text-emerald-100 bg-emerald-800 hover:bg-emerald-700 transition";
+      navGuideBtn.className = "px-3 py-1.5 rounded-md font-medium text-emerald-100 bg-emerald-800 hover:bg-emerald-700 transition";
+
+      if (target === "test") {
+        viewTest.classList.remove("hidden");
+        navTestBtn.className = "px-3 py-1.5 rounded-md font-medium bg-emerald-600 text-white shadow transition hover:bg-emerald-500";
+      } else if (target === "roles") {
+        viewRoles.classList.remove("hidden");
+        navRolesBtn.className = "px-3 py-1.5 rounded-md font-medium bg-emerald-600 text-white shadow transition hover:bg-emerald-500";
+        renderRolesCatalog();
+      } else if (target === "guide") {
+        viewGuide.classList.remove("hidden");
+        navGuideBtn.className = "px-3 py-1.5 rounded-md font-medium bg-emerald-600 text-white shadow transition hover:bg-emerald-500";
+      }
+    }
+
+    navTestBtn.addEventListener("click", () => switchView("test"));
+    navRolesBtn.addEventListener("click", () => switchView("roles"));
+    navGuideBtn.addEventListener("click", () => switchView("guide"));
+
+    // --- SETUP CARD INTERACTION ---
+    modeCardMulti.addEventListener("click", () => {
+      modeMultiRadio.checked = true;
+      currentMode = "multi";
+      modeCardMulti.className = "p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer transition hover:shadow-sm";
+      modeCardTargeted.className = "p-4 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition hover:shadow-sm";
+      targetRoleContainer.classList.add("hidden");
+    });
+
+    modeCardTargeted.addEventListener("click", () => {
+      modeTargetedRadio.checked = true;
+      currentMode = "targeted";
+      modeCardTargeted.className = "p-4 rounded-xl border-2 border-emerald-600 bg-emerald-50/50 cursor-pointer transition hover:shadow-sm";
+      modeCardMulti.className = "p-4 rounded-xl border-2 border-slate-200 hover:border-slate-300 bg-white cursor-pointer transition hover:shadow-sm";
+      targetRoleContainer.classList.remove("hidden");
+    });
+
+    startTestBtn.addEventListener("click", () => {
+      candidateName = candidateNameInput.value.trim() || "Aprendiz GTH SAS";
+      candidateId = candidateIdInput.value.trim() || "Ficha 2715420";
+      targetRoleId = targetRoleSelect.value;
+
+      setupCard.classList.add("hidden");
+      document.getElementById("sjt-explainer-card")?.classList.add("hidden");
+      testRunner.classList.remove("hidden");
+      resultsDashboard.classList.add("hidden");
+
+      currentQuestionIndex = 0;
+      userAnswers = {};
+
+      if (currentMode === "targeted") {
+        activeModeLabel.textContent = "Aptitud de Cargo Específico";
+        activeTargetBadge.classList.remove("hidden");
+        activeTargetName.textContent = JOB_ROLES[targetRoleId].shortTitle;
+      } else {
+        activeModeLabel.textContent = "Role Discovery";
+        activeTargetBadge.classList.add("hidden");
+      }
+
+      renderCurrentQuestion();
+    });
+
+    // --- TEST RUNNER LOGIC ---
+    function renderCurrentQuestion() {
+      const q = QUESTIONS[currentQuestionIndex];
+      const total = QUESTIONS.length;
+      const progress = Math.round(((currentQuestionIndex + 1) / total) * 100);
+
+      progressText.textContent = `Question ${currentQuestionIndex + 1} of ${total}`;
+      progressPercent.textContent = `${progress}% Completed`;
+      progressBarFill.style.width = `${progress}%`;
+
+      qCategoryTag.textContent = q.category;
+      qTitle.textContent = q.title;
+      qScenario.textContent = q.scenarioEn;
+      qScenarioEs.textContent = q.scenarioEs;
+
+      if (currentMode === "targeted") {
+        qRoleTag.textContent = `Target Role: ${JOB_ROLES[targetRoleId].shortTitle}`;
+      } else {
+        qRoleTag.textContent = "Area: GTH SAS (6 Roles)";
+      }
+
+      // Render Options
+      optionsContainer.innerHTML = "";
+      validationHint.classList.add("hidden");
+
+      q.options.forEach((opt, idx) => {
+        const isSelected = userAnswers[q.id] === idx;
+        const optCard = document.createElement("div");
+        optCard.className = `p-4 rounded-xl border-2 cursor-pointer transition flex items-start space-x-3.5 ${
+          isSelected 
+            ? "border-emerald-600 bg-emerald-50/70 shadow-sm" 
+            : "border-slate-200 hover:border-slate-300 bg-white"
+        }`;
+
+        const radio = document.createElement("div");
+        radio.className = `w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 mt-0.5 ${
+          isSelected ? "border-emerald-600 bg-emerald-600" : "border-slate-300 bg-white"
+        }`;
+        if (isSelected) {
+          radio.innerHTML = `<div class="w-2 h-2 rounded-full bg-white"></div>`;
+        }
+
+        const content = document.createElement("div");
+        content.className = "flex-1";
+        
+        // Highlight Do or Does
+        const highlightedText = opt.text.replace(
+          /^(Do|Does)\b/i, 
+          `<span class="font-extrabold text-emerald-800 bg-emerald-100 px-1.5 py-0.5 rounded mr-1">$1</span>`
+        );
+
+        content.innerHTML = `
+          <p class="text-sm font-semibold text-slate-900 leading-snug mb-1">${highlightedText}</p>
+          <p class="text-xs text-slate-500 italic">${opt.textEs}</p>
+        `;
+
+        const speakOptBtn = document.createElement("button");
+        speakOptBtn.type = "button";
+        speakOptBtn.className = "shrink-0 px-2 py-1 rounded-md bg-slate-100 hover:bg-emerald-100 text-slate-600 hover:text-emerald-800 text-xs font-bold transition";
+        speakOptBtn.innerHTML = "&#128266;";
+        speakOptBtn.title = "Listen to this option";
+        speakOptBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          speakText(opt.text);
+        });
+
+        optCard.appendChild(radio);
+        optCard.appendChild(content);
+        optCard.appendChild(speakOptBtn);
+
+        optCard.addEventListener("click", () => {
+          userAnswers[q.id] = idx;
+          validationHint.classList.add("hidden");
+          renderCurrentQuestion();
+        });
+
+        optionsContainer.appendChild(optCard);
+      });
+
+      prevBtn.disabled = currentQuestionIndex === 0;
+      nextBtn.textContent = currentQuestionIndex === total - 1 ? "Finish & View Results" : "Next Question \u2192";
+    }
+
+    prevBtn.addEventListener("click", () => {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderCurrentQuestion();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const q = QUESTIONS[currentQuestionIndex];
+      if (userAnswers[q.id] === undefined) {
+        validationHint.classList.remove("hidden");
+        return;
+      }
+
+      if (currentQuestionIndex < QUESTIONS.length - 1) {
+        currentQuestionIndex++;
+        renderCurrentQuestion();
+      } else {
+        calculateAndDisplayResults();
+      }
+    });
+
+    // --- RESULTS CALCULATION ---
+    function calculateAndDisplayResults() {
+      testRunner.classList.add("hidden");
+      resultsDashboard.classList.remove("hidden");
+
+      // Set Metadata
+      resCandidateName.textContent = candidateName;
+      resDate.textContent = new Date().toLocaleDateString("es-CO", { year: 'numeric', month: 'long', day: 'numeric' });
+      resId.textContent = candidateId;
+
+      // Initialize role scores
+      const roleTotals = { rec: 0, nom: 0, sst: 0, cap: 0, bie: 0, doc: 0 };
+      const maxPossiblePerRole = { rec: 0, nom: 0, sst: 0, cap: 0, bie: 0, doc: 0 };
+
+      // Calculate max possible points per role across all questions
+      QUESTIONS.forEach(q => {
+        let maxRoleQ = { rec: 0, nom: 0, sst: 0, cap: 0, bie: 0, doc: 0 };
+        q.options.forEach(opt => {
+          Object.keys(opt.roleScores).forEach(r => {
+            if (opt.roleScores[r] > maxRoleQ[r]) maxRoleQ[r] = opt.roleScores[r];
+          });
+        });
+        Object.keys(maxPossiblePerRole).forEach(r => {
+          maxPossiblePerRole[r] += maxRoleQ[r];
+        });
+      });
+
+      // Tally candidate points
+      let totalPointsEarned = 0;
+      let totalMaxPoints = QUESTIONS.length * 3;
+
+      QUESTIONS.forEach(q => {
+        const selectedIdx = userAnswers[q.id];
+        const selectedOpt = q.options[selectedIdx];
+        
+        let highestInQuestion = 0;
+        Object.keys(selectedOpt.roleScores).forEach(r => {
+          roleTotals[r] += selectedOpt.roleScores[r];
+          if (selectedOpt.roleScores[r] > highestInQuestion) {
+            highestInQuestion = selectedOpt.roleScores[r];
+          }
+        });
+        totalPointsEarned += highestInQuestion;
+      });
+
+      // Percentage per role
+      const rolePercentages = {};
+      Object.keys(JOB_ROLES).forEach(r => {
+        const pct = Math.round((roleTotals[r] / maxPossiblePerRole[r]) * 100);
+        rolePercentages[r] = Math.min(100, Math.max(0, pct));
+      });
+
+      // Sort roles by highest match
+      const sortedRoles = Object.keys(rolePercentages).sort((a, b) => rolePercentages[b] - rolePercentages[a]);
+      const primaryRoleId = sortedRoles[0];
+      const primaryRole = JOB_ROLES[primaryRoleId];
+
+      // Overall Score Calculation
+      let finalOverallPct = 0;
+      if (currentMode === "targeted") {
+        finalOverallPct = rolePercentages[targetRoleId];
+        resPoints.textContent = `${roleTotals[targetRoleId]} / ${maxPossiblePerRole[targetRoleId]} pts en cargo`;
+      } else {
+        finalOverallPct = Math.round((totalPointsEarned / totalMaxPoints) * 100);
+        resPoints.textContent = `${totalPointsEarned} / ${totalMaxPoints} pts situacionales`;
+      }
+
+      resOverallScore.textContent = `${finalOverallPct}%`;
+      resGrammarScore.textContent = "100%"; // Correct usage of Do and Does in chosen sentences
+
+      // Qualification Status Banner
+      if (currentMode === "targeted") {
+        const targetRoleObj = JOB_ROLES[targetRoleId];
+        if (finalOverallPct >= 80) {
+          qualificationBanner.className = "mt-6 p-4 rounded-xl border flex items-start space-x-3 bg-emerald-50 border-emerald-300 text-emerald-950";
+          statusHeadline.textContent = `Result: QUALIFIED / APTO PARA EL CARGO (${targetRoleObj.shortTitle.toUpperCase()})`;
+          statusDetail.textContent = `Superaste el umbral de selección del 80%. Demuestras vocación directa, comprensión de las funciones del área y buen manejo del vocabulario técnico A2.`;
+        } else if (finalOverallPct >= 60) {
+          qualificationBanner.className = "mt-6 p-4 rounded-xl border flex items-start space-x-3 bg-amber-50 border-amber-300 text-amber-950";
+          statusHeadline.textContent = `Result: CONDITIONAL / EN DESARROLLO (${targetRoleObj.shortTitle.toUpperCase()})`;
+          statusDetail.textContent = `Obtuviste ${finalOverallPct}%. Posees nociones básicas del área, pero se sugiere reforzar procedimientos clave de Talento Humano y preguntas en inglés.`;
+        } else {
+          qualificationBanner.className = "mt-6 p-4 rounded-xl border flex items-start space-x-3 bg-rose-50 border-rose-300 text-rose-950";
+          statusHeadline.textContent = `Result: NOT QUALIFIED HERE / NO APTO (BEST FIT: ${primaryRole.shortTitle.toUpperCase()})`;
+          statusDetail.textContent = `Tu puntaje para ${targetRoleObj.shortTitle} fue de ${finalOverallPct}%. Tus habilidades e intereses demuestran mucha mayor compatibilidad con el área de ${primaryRole.shortTitle} (${rolePercentages[primaryRoleId]}%).`;
+        }
+      } else {
+        qualificationBanner.className = "mt-6 p-4 rounded-xl border flex items-start space-x-3 bg-emerald-50 border-emerald-300 text-emerald-950";
+        statusHeadline.textContent = `Top Vocational Profile / Perfil Principal: ${primaryRole.shortTitle} (${rolePercentages[primaryRoleId]}% match)`;
+        statusDetail.textContent = `Tu evaluación muestra tus mayores fortalezas en ${primaryRole.title}. Tienes gran potencial de desempeño en este departamento de GTH SAS.`;
+      }
+
+      // Render 6 Roles Breakdown Bars
+      rolesScoreList.innerHTML = "";
+      sortedRoles.forEach(rId => {
+        const role = JOB_ROLES[rId];
+        const pct = rolePercentages[rId];
+        const isTarget = currentMode === "targeted" && rId === targetRoleId;
+        const isTop = rId === primaryRoleId;
+
+        const roleCard = document.createElement("div");
+        roleCard.className = `p-3.5 rounded-lg border ${
+          isTarget ? "bg-amber-50 border-amber-300" : isTop ? "bg-emerald-50/70 border-emerald-300" : "bg-slate-50 border-slate-200"
+        }`;
+
+        roleCard.innerHTML = `
+          <div class="flex items-center justify-between text-xs sm:text-sm font-semibold mb-1.5">
+            <div class="flex items-center space-x-2">
+              <span class="text-base">${role.icon}</span>
+              <span class="text-slate-900">${role.title}</span>
+              ${isTarget ? '<span class="text-[10px] bg-amber-200 text-amber-900 px-1.5 py-0.5 rounded font-bold uppercase">Selected Role / Cargo Elegido</span>' : ''}
+              ${isTop && !isTarget ? '<span class="text-[10px] bg-emerald-200 text-emerald-900 px-1.5 py-0.5 rounded font-bold uppercase">Best Match / Mayor Afinidad</span>' : ''}
+            </div>
+            <span class="font-bold text-slate-800">${pct}%</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden">
+            <div class="h-full ${role.barClass} rounded-full transition-all duration-500" style="width: ${pct}%;"></div>
+          </div>
+        `;
+        rolesScoreList.appendChild(roleCard);
+      });
+
+      // Display Deep Dive Card for Top Match
+      matchIcon.textContent = primaryRole.icon;
+      matchRoleTitle.textContent = primaryRole.title;
+      matchSuperpower.textContent = primaryRole.superpower;
+      matchEnglishKey.textContent = primaryRole.englishFocus;
+      matchRecommendation.innerHTML = `
+        <strong>For you / Para ti:</strong> Practice speaking these phrases aloud about <strong>${primaryRole.shortTitle}</strong>:<br>
+        &bull; <em>"${primaryRole.sampleQuestion}"</em><br>
+        &bull; <em>"Do you work in ${primaryRole.shortTitle}?"</em> <span class="text-emerald-700 italic">(¿Trabajas en ${primaryRole.shortTitle}?)</span><br>
+        &bull; <em>"I am a trainee today, and I will be a leader in this area."</em> <span class="text-emerald-700 italic">(Soy aprendiz hoy y seré líder en esta área.)</span>
+      `;
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- RETAKE TEST ---
+    retakeTestBtn.addEventListener("click", () => {
+      resultsDashboard.classList.add("hidden");
+      setupCard.classList.remove("hidden");
+      document.getElementById("sjt-explainer-card")?.classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- COPY SCORECARD SUMMARY ---
+    copySummaryBtn.addEventListener("click", () => {
+      const qStatus = statusHeadline.textContent;
+      const summaryText = `======================================================
+GTH SAS - REPORTE DE EVALUACIÓN SITUACIONAL (SJT)
+======================================================
+Aprendiz: ${candidateName}
+Ficha / ID: ${candidateId}
+Fecha: ${new Date().toLocaleDateString("es-CO")}
+Puntaje Global: ${resOverallScore.textContent} (${resPoints.textContent})
+Evaluación Gramatical: 100% (Manejo correcto de Do y Does - Nivel A2)
+${qStatus}
+
+Cargo con Mayor Afinidad: ${matchRoleTitle.textContent}
+Funciones Clave: ${matchSuperpower.textContent}
+Enfoque en Inglés: ${matchEnglishKey.textContent}
+
+Evaluación virtual desarrollada para Aprendices de Talento Humano - GTH SAS.
+======================================================`;
+
+      navigator.clipboard.writeText(summaryText).then(() => {
+        copyToast.classList.remove("hidden");
+        setTimeout(() => copyToast.classList.add("hidden"), 3000);
+      }).catch(() => {
+        const textarea = document.createElement("textarea");
+        textarea.value = summaryText;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild(textarea);
+        copyToast.classList.remove("hidden");
+        setTimeout(() => copyToast.classList.add("hidden"), 3000);
+      });
+    });
+
+    // --- PRINT / SAVE PDF ---
+    printBtn.addEventListener("click", () => {
+      window.print();
+    });
+
+    // --- RENDER ROLES CATALOG ---
+    function renderRolesCatalog() {
+      catalogGrid.innerHTML = "";
+      Object.keys(JOB_ROLES).forEach(k => {
+        const r = JOB_ROLES[k];
+        const card = document.createElement("div");
+        card.className = "bg-slate-50 border border-slate-200 rounded-xl p-5 flex flex-col justify-between hover:shadow-md transition";
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center space-x-2.5 mb-3">
+              <span class="text-2xl">${r.icon}</span>
+              <div>
+                <h3 class="font-bold text-slate-900 text-sm sm:text-base leading-tight">${r.title}</h3>
+                <span class="text-[11px] font-semibold text-emerald-700 uppercase tracking-wide">GTH SAS Area / Área GTH SAS</span>
+              </div>
+            </div>
+            <p class="text-xs text-slate-600 mb-3 leading-relaxed">${r.description}</p>
+            <div class="bg-white p-3 rounded-lg border border-slate-200 text-xs space-y-2 mb-3">
+              <div class="text-slate-800">
+                <span class="font-bold text-slate-900 block mb-0.5">A2 English Skills / Habilidades en Inglés A2:</span>
+                ${r.englishFocus}
+              </div>
+              <div class="text-emerald-950 bg-emerald-50 p-2 rounded">
+                <span class="font-bold text-emerald-900 block mb-0.5">Sample Question / Ejemplo de Pregunta:</span>
+                <em>"${r.sampleQuestion}"</em>
+              </div>
+            </div>
+          </div>
+          <button class="w-full mt-2 py-1.5 px-3 bg-emerald-600 text-white font-semibold rounded-lg text-xs hover:bg-emerald-700 transition select-role-btn" data-role="${r.id}">
+            Assess me for ${r.shortTitle} &rarr;
+          </button>
+        `;
+
+        card.querySelector(".select-role-btn").addEventListener("click", (e) => {
+          const selected = e.currentTarget.dataset.role;
+          switchView("test");
+          modeCardTargeted.click();
+          targetRoleSelect.value = selected;
+        });
+
+        catalogGrid.appendChild(card);
+      });
+    }
+
+
+    // --- NATURAL / NEURAL VOICE ENGINE ---
+    let cachedVoices = [];
+    let selectedVoiceName = '';
+    let speechRate = 0.92;
+
+    try {
+      selectedVoiceName = localStorage.getItem('gth_preferred_voice') || '';
+    } catch(e) {}
+
+    function scoreVoice(v) {
+      let s = 0;
+      const name = (v.name || '').toLowerCase();
+      const lang = (v.lang || '').toLowerCase();
+      if (!lang.startsWith('en')) return -1000;
+      if (!v.localService) s += 150;
+      if (name.includes('natural') || name.includes('neural')) s += 140;
+      if (name.includes('online')) s += 80;
+      if (name.includes('jenny') || name.includes('aria') || name.includes('guy') || name.includes('ava') || name.includes('sara') || name.includes('ana')) s += 100;
+      if (name.includes('google us english') || name.includes('google uk english female')) s += 90;
+      if (name.includes('samantha') || name.includes('siri') || name.includes('karen') || name.includes('daniel') || name.includes('oliver')) s += 70;
+      if (name.includes('enhanced') || name.includes('premium')) s += 60;
+      if (lang === 'en-us') s += 25;
+      if (lang === 'en-gb') s += 20;
+      if (name.includes('david') || name.includes('zira') || name.includes('mark') || name.includes('hazel') || name.includes('george')) s -= 80;
+      if (name.includes('espeak') || name.includes('compact') || name.includes('desktop')) s -= 200;
+      return s;
+    }
+
+    function populateVoiceSelect() {
+      const sel = document.getElementById('voice-select');
+      if (!sel || !('speechSynthesis' in window)) return;
+      cachedVoices = window.speechSynthesis.getVoices();
+      const enVoices = cachedVoices
+        .filter(v => v.lang && v.lang.toLowerCase().startsWith('en') && scoreVoice(v) > -500)
+        .sort((a, b) => scoreVoice(b) - scoreVoice(a));
+      if (!enVoices.length) return;
+      sel.innerHTML = '';
+      enVoices.forEach((v, i) => {
+        const opt = document.createElement('option');
+        opt.value = v.name;
+        const isNeural = scoreVoice(v) >= 100;
+        let cleanName = v.name.replace(/Microsoft |Google |Apple |Online \(Natural\) - |English \(United States\)|English \(United Kingdom\)/gi, '').trim();
+        cleanName = cleanName.replace(/\s+/g, ' ').slice(0, 22);
+        opt.textContent = (isNeural ? '✨ ' : (i === 0 ? '★ ' : '')) + cleanName + (v.lang === 'en-GB' ? ' (UK)' : ' (US)');
+        sel.appendChild(opt);
+      });
+      if (selectedVoiceName && enVoices.some(v => v.name === selectedVoiceName)) {
+        sel.value = selectedVoiceName;
+      } else {
+        selectedVoiceName = enVoices[0].name;
+        sel.value = selectedVoiceName;
+      }
+    }
+
+    if ('speechSynthesis' in window) {
+      populateVoiceSelect();
+      window.speechSynthesis.onvoiceschanged = populateVoiceSelect;
+      let poll = 0;
+      const iv = setInterval(() => {
+        poll++;
+        cachedVoices = window.speechSynthesis.getVoices();
+        if (cachedVoices.length > 0 || poll > 25) {
+          clearInterval(iv);
+          populateVoiceSelect();
+        }
+      }, 150);
+    }
+
+    function getBestEnglishVoice() {
+      if (!cachedVoices.length && 'speechSynthesis' in window) {
+        cachedVoices = window.speechSynthesis.getVoices();
+      }
+      if (selectedVoiceName) {
+        const chosen = cachedVoices.find(v => v.name === selectedVoiceName);
+        if (chosen) return chosen;
+      }
+      const enVoices = cachedVoices.filter(v => v.lang && v.lang.toLowerCase().startsWith('en') && scoreVoice(v) > -500);
+      if (!enVoices.length) return null;
+      enVoices.sort((a, b) => scoreVoice(b) - scoreVoice(a));
+      return enVoices[0];
+    }
+
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance(text.replace(/\s+/g, ' ').trim());
+      const v = getBestEnglishVoice();
+      if (v) { utt.voice = v; utt.lang = v.lang; } else { utt.lang = 'en-US'; }
+      utt.rate = speechRate;
+      utt.pitch = 1.0;
+      window.speechSynthesis.speak(utt);
+    }
+
+    document.getElementById('voice-select')?.addEventListener('change', (e) => {
+      selectedVoiceName = e.target.value;
+      try { localStorage.setItem('gth_preferred_voice', selectedVoiceName); } catch(err) {}
+      if (!document.getElementById('test-runner').classList.contains('hidden')) {
+        speakText(QUESTIONS[currentQuestionIndex].scenarioEn);
+      }
+    });
+
+    document.getElementById('btn-speed-toggle')?.addEventListener('click', () => {
+      if (speechRate > 0.8) {
+        speechRate = 0.75;
+        document.getElementById('speed-label').textContent = '0.75x';
+      } else {
+        speechRate = 0.92;
+        document.getElementById('speed-label').textContent = '1.0x';
+      }
+    });
+
+    document.getElementById('btn-speak-scenario')?.addEventListener('click', () => {
+      speakText(QUESTIONS[currentQuestionIndex].scenarioEn);
+    });
+  </script>
+</body>
+</html>
